@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+    <title>Thanagorn E-portfolio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body data-bs-spy="scroll" data-bs-target="navbar" data-bs-offset="56">
+    <!--Modal-->
+    <div class="position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index: 3;">
+        <div id="Copied" class="bg-black toast hide" role="alert" data-bs-delay="2000" aria-live="assertive"
+            aria-atomic="true" style="border-radius: 0.5rem;">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <span class="text-white fw-bold fs-5">copied!!<span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" position-fixed bottom-0 start-50 translate-middle-x p-3 d-block d-lg-none" style="z-index: 2;">
+        <div id="MobileAlert" class="bg-dark toast" role="alert" data-bs-autohide="false" aria-live="assertive"
+            aria-atomic="true" style="border-radius: 0.5rem;">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <span class="text-white fw-bold">การเข้าชมในโทรศัพท์อาจทำให้<br>รูปแบบคลาดเคลื่อนเล็กน้อย<span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pic1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container m-auto">
+                        <img src="{{ url_for('static', filename='photo/profile.jpg') }}" class="shadow w-100 rounded-3" alt="Thanagorn Pongmanachai">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pic2">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container m-auto">
+                        <img src="{{ url_for('static', filename='photo/BunTong1.png') }}" class="shadow w-100 rounded-3" alt="BunTong!"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/BunTong2.png') }}" class="shadow w-100 rounded-3" alt="BunTong!">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pic3">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container m-auto">
+                        <img src="{{ url_for('static', filename='photo/Chatbot2.png') }}" class="shadow w-100 rounded-3" alt="ChatBot"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/Chatbot.png') }}" class="shadow w-100 rounded-3" alt="ChatBot">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pic4">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container m-auto">
+                        <img src="{{ url_for('static', filename='photo/YSC1.jpg') }}" class="shadow w-100 rounded-3" alt="YSC"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/YSC3.jpg') }}" class="shadow w-100 rounded-3" alt="YSC"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/YSC4.jpg') }}" class="shadow w-100 rounded-3" alt="YSC"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/YSC5.jpg') }}" class="shadow w-100 rounded-3" alt="YSC"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/YSC6.jpg') }}" class="shadow w-100 rounded-3" alt="YSC"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/YSC7.jpg') }}" class="shadow w-100 rounded-3" alt="YSC">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pic5">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container m-auto">
+                        <img src="{{ url_for('static', filename='photo/Online-ex1.jpg') }}" class="shadow w-100 rounded-3" alt="OE"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/online-ex2.jpg') }}" class="shadow w-100 rounded-3" alt="OE">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pic6">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container m-auto">
+                        <img src="{{ url_for('static', filename='photo/his2.jpg') }}" class="shadow w-100 rounded-3" alt="his"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/his3.jpg') }}" class="shadow w-100 rounded-3" alt="his"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/his4.jpg') }}"class="shadow w-100 rounded-3" alt="his"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/his5.jpg') }}" class="shadow w-100 rounded-3" alt="his"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/his6.jpg') }}" class="shadow w-100 rounded-3" alt="his"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/his7.jpg') }}" class="shadow w-100 rounded-3" alt="his"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/his8.jpg') }}" class="shadow w-100 rounded-3" alt="his">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pic7">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container m-auto">
+                        <img src="{{ url_for('static', filename='photo/san1.jpg') }}" class="shadow w-100 rounded-3" alt="san"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/san2.jpg') }}" class="shadow w-100 rounded-3" alt="san"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/san3.JPG') }}" class="shadow w-100 rounded-3" alt="san"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/san4.JPG') }}" class="shadow w-100 rounded-3" alt="san">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pic8">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container m-auto">
+                        <img src="{{ url_for('static', filename='photo/skill1.jpg') }}" class="shadow w-100 rounded-3" alt="OE"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/skill2.jpg') }}" class="shadow w-100 rounded-3" alt="OE"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/skill3.jpg') }}" class="shadow w-100 rounded-3" alt="OE"><br>
+                        <hr />
+                        <img src="{{ url_for('static', filename='photo/skill4.jpg') }}" class="shadow w-100 rounded-3" alt="OE"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <header>
+        <div>
+            <div class="container-fluid" >
+                <div class="row min-vh-100 align-items-center" style="z-index: 10;">
+                    <div class="col text-center" style="font-family: monospace;">
+                        <h1 class="display-1 c-sd" style="font-weight: 600;">Hello World!</h1>
+                        <p class="display-5 text-white" style="line-height: 1.5em;"class="d-lg-none">I'm Thanagorn Pongmanachai<br>ROAD TO BE <br
+                            class="d-lg-none";><b>ΣNGINEER</b></p>
+                            <div class="btn-box">
+                                <a href="#AboutMe" class="btn b-sd fs-5" style="width: 250px; ">Let's Start<i class="bi bi-gear-fill"></i></a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav id="NavBar" class="b-sr navbar navbar-dark navbar-expand-lg sticky-top fs-5" style="z-index: 1;">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbaritems">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand mr-auto fs-5" href="#"><i class="bi bi-windows"></i>
+                Thanagorn Pongmanachai</a>
+            <div class="collapse navbar-collapse" id="navbaritems">
+                <ul class="navbar-nav mr-auto d-flex justify-content-evenly w-100">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#AboutMe"><i class="bi bi-person-bounding-box"></i>
+                            About me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Accomplishments"><i class="bi bi-trophy-fill"></i>
+                            Accomplishments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Project"><i class="bi bi-code-slash"></i>
+                            Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Activities"><i class="bi bi-people-fill"></i>
+                            Activities</a>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+    <div id="AboutMe" class="topic p-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="card b-sd">
+                        <a data-bs-toggle="modal" data-bs-target="#pic1">
+                            <img src="{{ url_for('static', filename='photo/profile.jpg') }}" class="card-img-top" alt="Thanagorn Pongmanachai">
+                        </a>
+                        <div class="card-body">
+                            <h2 class="card-title">ธนกร พงศ์มานะชัย</h2>
+                            <p class="card-text"><i class="bi bi-clock-fill"></i> <b class="text-black">วันเกิด :</b> 23
+                                กรกฎาคม พ.ศ. 2548
+                            </p>
+                            <p class="card-text"><i class="bi bi-palette-fill"></i> <b class="text-black">งานอดิเรก
+                                    :</b> เล่นดนตรีและศึกษาความรู้ด้านต่างๆ</p>
+                            <p class="card-text"><i class="bi bi-telephone-fill"></i> <b class="text-black">โทร. :</b>
+                                099-256-3719</p>
+                            <p class="card-text"><i class="bi bi-envelope-fill"></i> <b class="text-black">E-mail :</b>
+                                <a class="text-decoration-none"
+                                    href="mailto:thanagorn2005@gmail.com">thanagorn2005@gmail.com </a><span id="cpybtn"
+                                    style="cursor: pointer;" class="fas fa-copy" onclick="copytxt()"></span>
+                            </p>
+                            <div class="btn-group btn-group-justified d-flex" role="group">
+                                <a href="https://www.facebook.com/profile.php?id=100010528771022" target="_blank"
+                                    class="btn btn-primary w-100"><i class="bi bi-facebook"></i> <br
+                                        class="d-lg-none">Facebook</a>
+                                <a href="https://github.com/ArthurEZ" class="btn w-100" target="_blank"
+                                    style="background-color: #333; color: white;"><i class="bi bi-github"></i> <br
+                                        class="d-lg-none">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <br class="d-lg-none">
+                        <h1 class="display-6" style="font-weight: 500;">My Motivation <br>แรงบันดาลใจ</h1>
+                    <br>
+                    <div style="font-size: 20.5px; line-height: 1.8em;">
+                        <p>
+                            สิ่งที่ผมถนัดที่สุดคือการนำความรู้ที่มีนำมาประยุกต์ใช้ในชีวิตจริงและผมก็ชอบที่ได้สร้างหรือซ่อมแซมสิ่งต่างๆด้วยตัวเอง 
+                            ทุกครั้งที่ทำสำเร็จมันทำให้ผมรู้สึกดีและภูมิใจในสิ่งที่ทำได้ หรือแม้แต่หลังจากที่เข้าเรียนสายวิทยาศาสตร์-คณิตศาสตร์ผมก็นำความรู้ทางวิทยาศาสตร์มาใช้ในชีวิตจริงเสมอ
+                            หรือการนำกระบวนการทางวิทยาศาสตร์มาหาคำตอบในคำถามที่ผมสงสัยขึ้นมา ในตอนเป็นเด็กผมชอบเล่นเกมเป็นอย่างมาก เกมที่ผมชอบเล่นที่สุดคือ Minecraft 
+                            เพราะว่าเกมนี้ทำให้ผมได้ปลดปล่อยจินตนาการในวัยเด็กอย่างเต็มที่ ซึ่งหลังจากนั้นมันเริ่มทำให้ผมรู้สึก<b>อยากทำเกมและสนใจในคอมพิวเตอร์ขึ้นมา</b>แต่ในตอนนั้นไม่สามารถทำได้เนื่องจาก
+                            ผมยังไม่มีความรู้ความสามารถมากพอและเนื่องด้วยมัธยมต้นผมนั้นเรียนหนักมากเพื่อที่จะได้เรียนต่อในที่ๆดี 
+                            ผมก็เก็บความฝันนี้ไว้<br>
+                        </p>
+                        <p>
+                            ในช่วงมัธยม 5 ผมตื่นเต้นมากที่จะได้เรียนเขียนโค้ดพื้นฐานเพราะเป็นสิ่งที่ตนเองสนใจมาตั้งแต่เด็ก ภาษาที่ได้เรียนคือภาษา C++ แต่ในตอนนั้นผมยอมรับว่าผมตามอาจารย์ไม่ทันเลยจึงทำให้ผมท้อแท้กับการเรียนสายคอมพิวเตอร์และได้หยุดความคิดและความฝันไว้ 
+                            ในช่วงขึ้นมัธยม 6 ผมถูกคนรอบตัวถามว่าได้คณะที่สนใจรึยังอยู่เสมอในตอนแรกผมนั้นก็ยังไม่รู้ตัวเอง ผมเลยถามตัวเองว่าสิ่งที่ผมถนัดนั้นคืออะไร และชอบอะไร ผมนั้น<b>ถนัดในวิชาฟิสิกส์</b>
+                            คณิตศาสตร์ และผมชอบในดนตรีและเกม จึงทำให้ผมหันกลับมา<b>ลองเริ่มต้นกับการ coding อีกครั้ง</b> ครั้งนี้ผมเรียนรู้ด้วยตัวเองและเริ่มที่ภาษา <b>python</b> 
+                            และครั้งนี้ผมกับรู้สึกว่า<b>มันก็ไม่ได้ยากอย่างถึงขั้นทำไม่ได้เลย</b>และผมก็ได้ลองศึกษา <b>html, css, JavaScript, และ C#</b>  ทำให้ผมกลับมามีไฟอีกครั้งและ<b>ผมเริ่มมีความสนใจในวิชาชีพ 
+                            Software Engineer จึงทำให้ผมตัดสินใจที่จะเข้าคณะวิศวกรรมศาสตร์ และตั้งใจเรียนเพื่อให้ได้เข้าสาขาวิศวกรรมคอมพิวเตอร์</b>
+                        </p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid py-3 px-auto mt-3">
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" style="background-color: black;">
+                        <a class="btn" data-bs-toggle="collapse" href="#collapseOne" style="color: white;"><i class="bi bi-vector-pen display-3"></i>
+                            <span class="display-3" style="font-weight: 500;">Education</span>
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                        <div class="row">
+                            <div class="col-lg" style="text-align: center; justify-content: center; margin-top: 45px;">
+                                <img src="{{ url_for('static', filename='photo/school1.jpg') }}" style="height: 250px;">
+                                <h2>โรงเรียนเซนต์ปอลหนองคาย</h2>
+                                <h3>ประถมศึกษาปีที่ 1 ถึง 6</h3>
+                            </div>
+                            <div class="col-lg" style="text-align: center;">
+                                <img src="{{ url_for('static', filename='photo/school2.png') }}" style="size: 20px;">
+                                <h2>โรงเรียนปทุมเทพวิทยาคาร</h2>
+                                <h3>มัธยมศึกษาปีที่ 1 ถึง 3</h3>
+                            </div>
+                            <div class="col-lg" style="text-align: center; margin-top: 45px;">
+                                <img src="{{ url_for('static', filename='photo/school3.png') }}" style="height: 250px;">
+                                <h2>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่นฝ่ายมัธยมศึกษา (ศึกษาศาสตร์)</h2>
+                                <h3>มัธยมศึกษาปีที่ 4 ถึง 6</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Accomplishments" class="topic">
+        <div class="container">
+            <hr />
+            <h1 class="display-4" style="font-weight: 700;"><i class="bi bi-trophy"></i>Accomplishments</h1>
+            <br>
+            <div>
+                <div class="container">
+                    <h1 class="display-5 fw-bold">ค่ายโอลิมปิกวิชาการ (ฟิสิกส์)</h1>
+                    <div class="row">
+                        <div class="col-lg-7 col-12">
+                            <h1 class="fs-2">เข้าร่วมอบรมหลักสูตรโอลิมปิกวิชาการ ค่าย 1 สอวน. ฟิสิกส์ ปีการศึกษา 2565 ณ โรงเรียนขอนแก่นวิทยายน</h1>
+                            <h1 class="fs-3"><span class="badge bg-info rounded-3">ระดับภูมิภาค</span>
+                                <span class="badge bg-warning rounded-3">ฟิสิกส์</span>
+                            </h1>
+                            <div class="my-3 d-block d-lg-none">
+                                <div id="posn" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#posn" data-bs-slide-to="0" class="active"></button>
+                                        <button type="button" data-bs-target="#posn" data-bs-slide-to="1"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class=" img-fluid shadow" src="{{ url_for('static', filename='photo/posn2.jpg') }}" alt="POSN-Phy">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="img-fluid shadow" src="{{ url_for('static', filename='photo/posn1.png') }}" alt="POSN-Phy">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <p class="fs-5">
+                                การเข้าร่วมสอวน. ฟิสิกส์ครั้งนี้ทำให้ผมได้มีความรู้ทางฟิสิกส์ที่ลึกลงไปมากขึ้น และได้รู้จักการเขียนผลการทดลอง 
+                                การเขียนกราฟ และสรุปผลการทดลองตามหลักที่ถูกต้อง อีกทั้งยังได้ใช้เครื่องมือทางวิทยาศาสตร์ นอกจากนั้นยังทำให้ได้รู้จักเพื่อนใหม่ที่มีความชอบในทางเดียวกันอีกด้วย 
+                                ถึงแม้ว่าจะน่าเสียดายที่ผมไม่สามารถผ่านเข้าไปยังค่าย 2 ได้ เพราะผมอาจจะเตรียมตัวไปไม่มากพอ แต่ผมก็ภูมิใจที่ได้พยายามอย่างเต็มที่ 
+                                และการอบรมครั้งนี้ทำให้ผมมั่นใจว่าผมสามารถพัฒนาตัวเองในด้านนี้ได้มากยิ่งขึ้น
+                            </p>
+                        </div>
+                        <div class="d-none d-lg-block col-lg-5 align-self-center">
+                            <div id="posn" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#posn" data-bs-slide-to="0" class="active"></button>
+                                    <button type="button" data-bs-target="#posn" data-bs-slide-to="1"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class=" img-fluid shadow" src="{{ url_for('static', filename='photo/posn2.jpg') }}" alt="POSN-Phy">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="img-fluid shadow" src="{{ url_for('static', filename='photo/posn1.png') }}" alt="POSN-Phy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div>
+                <div class="container">
+                    <h1 class="display-5 fw-bold">13th SCiUS FORUM</h1>
+                    <div class="row">
+                        <div class="col-lg-7 col-12">
+                            <h1 class="fs-2"><span class="fw-bold" style="color:#CD7F32;">รางวัลเหรียญทองแดง</span>
+                                การนำเสนอโครงงานวิทยาศาสตร์ สาขา Biology ในรูปแบบ Oral Presentation</h1>
+                                <h1 class="fs-3"><span class="badge bg-danger rounded-3">ระดับประเทศ</span>
+                                    <span class="badge bg-success rounded-3">ชีววิทยา</span>
+                                </h1>
+                                <div class="my-3 d-block d-lg-none">
+                                    <div id="forum" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#forum" data-bs-slide-to="0" class="active"></button>
+                                            <button type="button" data-bs-target="#forum" data-bs-slide-to="1"></button>
+                                            <button type="button" data-bs-target="#forum" data-bs-slide-to="2"></button>
+                                        </div>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img class=" img-fluid shadow" src="{{ url_for('static', filename='photo/Forum1.jpg') }}" alt="Forum">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="img-fluid shadow" src="{{ url_for('static', filename='photo/Forum2.png') }}" alt="Forum">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="img-fluid shadow" src="{{ url_for('static', filename='photo/Forum3.png') }}" alt="Forum">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><br>
+                            <p class="fs-5">
+                                งาน 13th SCiUS Forum เป็นงานที่ทำให้ผมได้รู้จักการค้นหาสิ่งใหม่ๆในทางวิทยาศาสตร์ 
+                                ได้เข้าห้องแล๊บโดยมีพี่นักศึกษาและอาจารย์ที่ปรึกษาจากคณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่นคอยดูแลตลอดการทำโครงงาน 
+                                และได้ใช้ทักษะการเขียนผลการทดลอง การสรุปผลการทดลองที่เคยได้เรียนรู้ใน ค่ายสอวน. 
+                                และยังทำให้ผมมีทักษะในการนำเสนอในรูปแบบภาษาอังกฤษมากขึ้นและผมยังได้เหรียญทองแดงจากการนำเสนอปากเปล่าอีกด้วย
+                                <br><span class="fw-bold">ลิงค์เอกสารโครงงาน :</span>
+                                <a role="button" class="rounded-3 btn btn-dark b-pm fw-bold"
+                                    style="border-color: white;" target="_blank"
+                                    href="https://drive.google.com/drive/folders/1xojy_jaY9yfdXSCQWYY-ka7ciY84axh9?usp=drive_link">
+                                    13th SCiUS Forum <i class="fas fa-external-link-alt"></i></a>
+                            </p>
+                        </div>
+                        <div class="d-none d-lg-block col-lg-5 align-self-center">
+                            <div id="forum" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#forum" data-bs-slide-to="0" class="active"></button>
+                                    <button type="button" data-bs-target="#forum" data-bs-slide-to="1"></button>
+                                    <button type="button" data-bs-target="#forum" data-bs-slide-to="2"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class=" img-fluid shadow" src="{{ url_for('static', filename='photo/Forum1.jpg') }}" alt="Forum">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="img-fluid shadow" src="{{ url_for('static', filename='photo/Forum2.png') }}" alt="Forum">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="img-fluid shadow" src="{{ url_for('static', filename='photo/Forum3.png') }}" alt="Forum">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid py-3 px-auto mt-3">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" style="background-color: black;">
+                            <a class="btn" data-bs-toggle="collapse" href="#collapseOne" style="color: white;"><i class="bi bi-vector-pen display-3"></i>
+                                <span class="display-3" style="font-weight: 500;">CU-TEP SCORE</span>
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                            <div class="row">
+                                <div class="col-lg" style="text-align: center; justify-content: center; margin-top: 45px;">
+                                    <img src="{{ url_for('static', filename='photo/cutep.png') }}">
+                                    <h1>LEVEL : Upper Intermediate</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Project" class="topic">
+        <div class="container">
+            <hr/>
+            <h1 class="display-4" style="font-weight: 700;"><i class="bi bi-code-slash"></i>Project</h1>
+            <div>
+                <div class="container">
+                    <h1><b class="text-black">BunTong!</i></b> <span class="badge rounded-3 bg-black">Unity</span></h1>
+                    <div class="row">
+                        <div class="col-lg-7 col-12">
+                            <div class="my-3 d-block d-lg-none">
+                                <a data-bs-toggle="modal" data-bs-target="#pic2">
+                                    <img class="img-fluid shadow" src="{{ url_for('static', filename='photo/BunTong1.png') }}" alt="BunTong!">
+                                </a>
+                            </div><br>
+                            <p class="fs-4"> BunTong! คือเกมแนว Vocabulary Quiz โดยมีไก่ที่ชื่อบุญโต้งต้องปราบปีศาจโดยผู้เล่นจะต้องทายความหมายของคำศัพท์ให้ถูกต้องเพื่อที่จะทำให้บุญโต้งโจมตีได้ 
+                                แต่หากผู้เล่นทายผิดบุญโต้งจะโดนปีศาจโจมตี ผู้เล่นมีโอกาสผิดทั้งหมด 3 ครั้ง ก่อนที่บุญโต้งจะรับไม่ไหวและหมดสติไป</p>
+                            <p class="fs-4"> เมื่อตอนเป็นเด็กผมมีความฝันที่อยากที่จะมีเกมเป็นของตัวเอง แต่ด้วยตอนนั้นผมยังไม่มีความรู้และความสามารถมากพอที่จะทำ 
+                                ผมก็เลยสานฝันวัยเด็กตัวเองด้วยการลองทำเกมขึ้นมา Engine ที่ผมใช้คือ Unity การทำเกมครั้งนี้ทำให้ผมรู้ว่ามันไม่ใช่เรื่องง่ายเลยที่จะสร้างเกมขึ้นมา 
+                                ตั้งแต่การออกแบบจนไปถึงการวางระบบแต่เนื่องด้วยเวลาในการทำที่มีแค่สัปดาห์เดียวจึงทำให้บางอย่างที่วางไว้ต้องตัดออกเพื่อให้ทันเวลา</p>
+                            <p class="fs-4"><span class="fw-bold">สิ่งที่ได้รับ : </span>ทักษะการใช้ Unity การเขียนภาษา C# และทักษะการออกแบบ UI และการทำงานในเวลาที่จำกัด 
+                                และทำให้ผมรู้ว่า การทำอะไรซักอย่างขี้นมานั้นไม่เกินความสามารถ อยู่ที่จะไคว่คว้าและลงมือทำหรือไม่ 
+                                <br><span class="fw-bold">Download :</span>
+                                <a role="button" class="rounded-3 btn btn-danger b-pm fw-bold"
+                                    style="border-color: white;" target="_blank"
+                                    href="https://drive.google.com/drive/folders/1ILjfQWdfCK6ULn1cmqClPr8bNJotGOUm?usp=drive_link">
+                                    Drive <i class="fas fa-external-link-alt"> 
+                                    </i>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="d-none d-lg-block col-lg-5 align-self-center">
+                            <a data-bs-toggle="modal" data-bs-target="#pic2">
+                                <img class=" img-fluid shadow" src="{{ url_for('static', filename='photo/BunTong1.png') }}" alt="BunTong!">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="container">
+                    <hr />
+                    <h1><b class="text-black">Arthur</b> <span class="badge rounded-3 bg-primary">Python</span></h1></h1>
+                    <div class="row">
+                        <div class="col-lg-7 col-12">
+                            <div class="my-3 d-block d-lg-none">
+                                <a data-bs-toggle="modal" data-bs-target="#pic3">
+                                    <img class="img-fluid shadow" src="{{ url_for('static', filename='photo/Chatbot2.png') }}" alt="ChatBot">
+                                </a>
+                            </div><br>
+                            <p class="fs-4">Arthur คือ ChatBot AI ที่จะมาตอบคำถามที่คนสงสัยเกี่ยวกับ <br>
+                                E-Portfolio นี้ ผมใช้วิธีการ Deep learning ในการเทรน Arthur แต่ด้วยข้อมูลและเวลาที่จำกัดจึงทำให้เทรนได้แค่ข้อมูลที่จำเป็น
+                                ในการตอบคำถามที่เกี่ยวกับ portfolio นี้</p>
+                            <p class="fs-4"><span class="fw-bold">Module หลักๆที่ใช้ : </span> 
+                                <br><span class="badge rounded-3 bg-info">TensorFlow</span> For training Model
+                                <br><span class="badge rounded-3 bg-warning">Pythainlp</span> For tokenize words and sentences
+                                <br><span class="badge rounded-3 bg-success">numpy</span> For arrey Data
+                                <br><span class="badge rounded-3 bg-dark">Flask</span> For API to Website
+                                <br><span class="fw-bold">Source Code :</span>
+                                <a role="button" class="rounded-3 btn btn-danger b-pm fw-bold"
+                                    style="border-color: white;" target="_blank"
+                                    href="https://github.com/ArthurEZ/E-portfolio">
+                                    GitHub <i class="fas fa-external-link-alt"> 
+                                    </i>
+                                </a>
+                            </p>
+                        </div>  
+                        <div class="d-none d-lg-block col-lg-5 align-self-center">
+                            <a data-bs-toggle="modal" data-bs-target="#pic3">
+                                <img class=" img-fluid shadow" src="{{ url_for('static', filename='photo/Chatbot2.png') }}" alt="ChatBot">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Activities" class="topic">
+        <div class="container">
+            <hr />
+            <h1 class="display-4" style="font-weight: 700;"><i class="bi bi-people"></i>Activities</h1>
+            <div class="row">
+                <div class="col-lg-6">
+                    <img class="b-mx" src="{{ url_for('static', filename='photo/Lan1.png') }}">
+                </div>
+                <div class="col-lg-6">
+                    <img class="b-mx" src="{{ url_for('static', filename='photo/Lan2.png') }}">
+                </div>
+            </div>
+            <h1 class="display-5" style="font-weight: 500;">22th LARNGEAR <span class="badge rounded-3 bg-danger">ΣNGINEER</span></h1>
+            <p class="fs-4">
+                การเข้าร่วมค่ายลานเกียร์ครั้งนี้ทำให้ผมได้รู้จักคณะวิศวกรรมศาสตร์ของจุฬาลงกรณ์มหาวิทยาลัยมากขึ้น ได้ร่วมกิจกรรมสนุกๆจากรุ่นพี่นิสิตที่เตรียมไว้ 
+                และยังได้ความรู้เกี่ยวกับสาขาต่างๆในคณะวิศวกรรมศาสตร์อีกด้วย และยังได้เพื่อนจากต่างโรงเรียนต่างจังหวัดที่มีความสนใจในคณะวิศวกรรมเหมือนกัน 
+                อีกทั้งยังได้แลกเปลี่ยนความรู้เพิ่มเติมและทำความรู้จักกับพี่ๆนักศึกษาคณะวิศวกรรม การไปค่ายครั้งนี้ทำให้ผมได้ประสบการณ์ที่ดีมาก 
+                และทำให้ผมมุ่งมั่นที่จะเข้าคณะวิศวกรรมศาสตร์
+            </p>
+            <hr />
+            <div class="row">
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <a data-bs-toggle="modal" data-bs-target="#pic4">
+                                <img class="thmp" src="{{ url_for('static', filename='photo/YSC6.jpg') }}" class="card-img-top" alt="Arthur">
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">กิจกรรมรับน้อง</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp; รับหน้าที่มือกลองและหัวหน้าฝ่ายสันทนาการในกิจกรรม
+                                ต้อนรับน้องของโครงการ SCiUS KKU ณ เขาใหญ่
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <a data-bs-toggle="modal" data-bs-target="#pic5">
+                                <img class="thmp" src="{{ url_for('static', filename='photo/online-ex2.jpg') }}" class="card-img-top" alt="Arthur">
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">Online Exchange</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp; แลกเปลี่ยนความรู้และวัฒนธรรมกับ Kofu Minami High School ประเทศญี่ปุ่น
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <a data-bs-toggle="modal" data-bs-target="#pic6">
+                                <img class="thmp" src="{{ url_for('static', filename='photo/his4.jpg') }}" class="card-img-top" alt="Arthur">
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">History Camp</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp; ทัศนศึกษาเกี่ยวกับประวัติศาสตร์ทั้ง 4 ยุคของประเทศไทย โดยไปที่ สุโขทัย อยุธยา ธนบุรี และ กรุงเทพ 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <a data-bs-toggle="modal" data-bs-target="#pic7">
+                                <img class="thmp" src="{{ url_for('static', filename='photo/san1.jpg') }}" class="card-img-top" alt="Arthur">
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">ค่ายสานสัมพันธ์ฉันวมว.</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp; ทำความรู้จักกับนักเรียนโครงการ
+                                <br>วมว.ศูนย์อื่นๆ ที่มหาวิทยาลัยอุบลราชธานี
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <a data-bs-toggle="modal" data-bs-target="#pic8">
+                                <img class="thmp" src="{{ url_for('static', filename='photo/skill3.jpg') }}" class="card-img-top" alt="Arthur">
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">ค่ายทักษะชีวิต.</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp; เรียนรู้วิธีการเข้าสังคมและทักษะการใช้ชีวิตพื้นฐานร่วมกับเพื่อนๆโครงการวมว.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <img class="thmp" src="{{ url_for('static', filename='photo/scius.jpg') }}">
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">โครงการ วมว.มข.</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp;
+                                เป็นนักเรียนในโครงการ วมว.(โครงการสนับสนุนการจัดตั้งห้องเรียนวิทยาศาสตร์ในโรงเรียน
+                                โดยการกำกับดูแลของมหาวิทยาลัย) ณ มหาวิทยาลัยขอนแก่น
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <img class="thmp" src="{{ url_for('static', filename='photo/wit1.png') }}">
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">วิทยากรวิชาฟิสิกส์</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp;
+                                เป็นวิทยากรแนะแนวรุ่นน้องในการสอบเข้าค่าย สอวน.ฟิสิกส์ ณ โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น 
+                                ฝ่ายมัธยมศึกษา (ศึกษาศาสตร์) ในปีการศึกษา 2566
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <img class="thmp" src="{{ url_for('static', filename='photo/idea1.png') }}">
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">Idea Pitching</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp;
+                                เข้าร่วมกิจกรรม idea pitching ในงาน 13th SCiUS Forum โดยนำโครงงานที่ทำมาเปลี่ยนเป็นสินค้าเพื่อนำไปขายให้ชุมชน
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <img class="thmp" src="{{ url_for('static', filename='photo/leader.png') }}">
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">หัวหน้าห้อง</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp;
+                                ได้รับหน้าที่หัวหน้าห้องเมื่อตอนมัธยมศึกษาปีที่ 5 จัดการเอกสารและงานต่างๆภายในห้อง
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 itm my-3">
+                    <div class="row g-0 border rounded flex-md-row overflow-hidden shadow bg-light-gray">
+                        <div class="col-lg-5 p-0">
+                            <img class="thmp" src="{{ url_for('static', filename='photo/jit1.png') }}">
+                        </div>
+                        <div class="col-12 col-lg-7 p-3">
+                            <h1 class="fs-2 fw-bold">หน่วยประฐมพยาบาล</h1>
+                            <p class="fs-5">
+                                &nbsp;&nbsp;&nbsp;
+                                จิตอาสาหน่วยประฐมพยาบาลในงานรำบวงสวง ณ จังหวัดขอนแก่น
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+    
+    <div class="col text-center">
+        <p class="fs-1">A person who never made a mistake <br>
+                never tried anything new </p>
+    </div>
+    <div class="chat-bar-collapsible">
+        <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#ChatBox">
+            Chat With Arthur!
+        </button>
+    </div>
+    
+    <div class="offcanvas offcanvas-start" id="ChatBox">
+        <div class="offcanvas-header bg-danger">
+            <h1 class="offcanvas-title text-white">Arthur</h1>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body overflow-hidden">
+            <div class="full-chat-block">
+                <div class="outer-container">
+                    <div class="chat-container">
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                        </div>
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <input id="textInput" class="input-box" type="text" name="msg"
+                                    placeholder="Tap 'Enter' to send a message">
+                                <p></p>
+                            </div>
+                            <div class="chat-bar-icons">
+                                
+                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                    onclick="sendButton()"></i>
+                            </div>
+                        </div>
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    </footer>
+    <div>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script src="https://kit.fontawesome.com/c428577323.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </div>
+</body>
+</html>
