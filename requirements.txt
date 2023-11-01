@@ -67,7 +67,7 @@ termcolor==2.3.0
 tflearn==0.5.0
 threadpoolctl
 tqdm==4.66.1
-typing_extensions==4.8.0
+typing_extensions
 tzdata
 urllib3==2.0.7
 Werkzeug==3.0.0
