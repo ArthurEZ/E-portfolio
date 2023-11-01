@@ -65,7 +65,7 @@ tensorflow-intel
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==2.3.0
 tflearn==0.5.0
-threadpoolctl==3.2.0
+threadpoolctl
 tqdm==4.66.1
 typing_extensions==4.8.0
 tzdata==2023.3
