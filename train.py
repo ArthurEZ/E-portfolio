@@ -10,6 +10,8 @@ import pickle
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 import random
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 # Load intents from a JSON file
@@ -100,7 +102,7 @@ def chat():
 
         # Preprocess input and ensure it has the correct shape
         input_data = bag_of_words(inp, words)
-        input_data = input_data.reshape(1, len(input_data))  # Reshape to (1, 73)
+        input_data = input_data.reshape(1, len(input_data)) 
 
         results = model.predict(input_data)[0]
         results_index = np.argmax(results)
@@ -113,6 +115,6 @@ def chat():
             print(random.choice(responses))
         else:
             print("ขอโทษนะครับ ผมไม่เข้าใจในคำถาม กรุณาลองใหม่อีกครั้ง")
-        print(results_index)
+        print(results_index )
 
 chat()
