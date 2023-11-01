@@ -59,7 +59,7 @@ six==1.16.0
 sounddevice==0.4.6
 tensorboard
 tensorboard-data-server==0.7.1
-tensorflow==2.14.0
+tensorflow
 tensorflow-estimator==2.14.0
 tensorflow-intel==2.14.0
 tensorflow-io-gcs-filesystem==0.31.0
