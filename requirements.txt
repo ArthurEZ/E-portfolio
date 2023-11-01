@@ -9,7 +9,7 @@ charset-normalizer==3.3.0
 click==8.1.7
 colorama==0.4.6
 contourpy
-cycler==0.12.1
+cycler
 Flask==3.0.0
 flatbuffers==23.5.26
 fonttools==4.43.1
