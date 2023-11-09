@@ -1,21 +1,22 @@
 from flask import Flask, request, jsonify, render_template
-import os
 import pythainlp as pt
-from pythainlp.tokenize import word_tokenize
 import numpy as np
-import tensorflow as tf
 import random
 import json
 import pickle
 from tensorflow.keras.models import load_model
+from flask import Flask
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Load chatbot model
 model = load_model('model_keras.h5')
 
 # Load intents from a JSON file
-with open('intents.json', 'r', encoding='utf-8') as file:
+with open('/home/ArthurThanagorn/mysite/intents.json', 'r', encoding='utf-8') as file:
     intents = json.load(file)
 
 # Load the words and labels data
@@ -46,7 +47,6 @@ def bag_of_words(s, words):
                 bag[i] = 1
     return np.array(bag)
 
-# Define a route to serve the HTML page
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -58,5 +58,6 @@ def chat():
     bot_response = get_response(user_message)
     return jsonify({'bot_response': bot_response})
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

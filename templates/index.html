@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Bot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -200,7 +199,7 @@
             <div class="container-fluid" >
                 <div class="row min-vh-100 align-items-center" style="z-index: 10;">
                     <div class="col text-center" style="font-family: monospace;">
-                        <h1 class="display-1 c-sd" style="font-weight: 600;">Hello World!</h1>
+                        <h1 class="display-1 c-sd" style="font-weight: 600;"><span class="multiText"></span></h1>
                         <p class="display-5 text-white" style="line-height: 1.5em;"class="d-lg-none">I'm Thanagorn Pongmanachai<br>ROAD TO BE <br
                             class="d-lg-none";><b>ΣNGINEER</b></p>
                             <div class="btn-box">
@@ -300,7 +299,7 @@
         <div class="container-fluid py-3 px-auto mt-3">
             <div id="accordion">
                 <div class="card">
-                    <div class="card-header" style="background-color: black;">
+                    <div class="card-header" style="background-color: #e9202a;">
                         <a class="btn" data-bs-toggle="collapse" href="#collapseOne" style="color: white;"><i class="bi bi-vector-pen display-3"></i>
                             <span class="display-3" style="font-weight: 500;">Education</span>
                         </a>
@@ -453,17 +452,26 @@
             <div class="container-fluid py-3 px-auto mt-3">
                 <div id="accordion">
                     <div class="card">
-                        <div class="card-header" style="background-color: black;">
+                        <div class="card-header" style="background-color: #e9202a;">
                             <a class="btn" data-bs-toggle="collapse" href="#collapseOne" style="color: white;"><i class="bi bi-vector-pen display-3"></i>
-                                <span class="display-3" style="font-weight: 500;">CU-TEP SCORE</span>
+                                <span class="display-3" style="font-weight: 500;">CU-TEP</span>
                             </a>
                         </div>
                         <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
                             <div class="row">
-                                <div class="col-lg" style="text-align: center; justify-content: center; margin-top: 45px;">
-                                    <img src="{{ url_for('static', filename='photo/cutep.png') }}">
-                                    <h1>LEVEL : Upper Intermediate</h1>
+                                <div class="col-sm-7 col-12">
+                                    <div class="my-3 d-block d-lg-none">
+                                        <img class="img-fluid" src="{{ url_for('static', filename='photo/cutep.png') }}">
+                                    </div>
                                 </div>
+                                <div class="d-none d-lg-block col-6">
+                                    <div class="col-lg-6">
+                                        <img src="{{ url_for('static', filename='photo/cutep.png') }}">
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div style="text-align: center;">
+                                <h2>LEVEL : Upper Intermediate</h2>
                             </div>
                         </div>
                     </div>
@@ -552,11 +560,25 @@
             <hr />
             <h1 class="display-4" style="font-weight: 700;"><i class="bi bi-people"></i>Activities</h1>
             <div class="row">
-                <div class="col-lg-6">
-                    <img class="b-mx" src="{{ url_for('static', filename='photo/Lan1.png') }}">
+                <div class="col-lg-7 col-12">
+                    <div class="my-3 d-block d-lg-none">
+                        <div class="col-md-6">
+                            <img class="b-mx img-fluid" src="{{ url_for('static', filename='photo/Lan1.png') }}">
+                        </div>
+                        <div class="col-md-6">
+                            <img class="b-mx img-fluid" src="{{ url_for('static', filename='photo/Lan2.png') }}">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <img class="b-mx" src="{{ url_for('static', filename='photo/Lan2.png') }}">
+                <div class="d-none d-lg-block col-6">
+                    <div class="col-lg-6">
+                        <img class="b-mx" src="{{ url_for('static', filename='photo/Lan1.png') }}">
+                    </div>
+                </div>
+                <div class="d-none d-lg-block col-6">
+                    <div class="col-lg-6">
+                        <img class="b-mx" src="{{ url_for('static', filename='photo/Lan2.png') }}">
+                    </div>
                 </div>
             </div>
             <h1 class="display-5" style="font-weight: 500;">22th LARNGEAR <span class="badge rounded-3 bg-danger">ΣNGINEER</span></h1>
@@ -771,6 +793,18 @@
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
         <script src="https://kit.fontawesome.com/c428577323.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </div>
+    <div>
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+        <script>
+            var typingEffect = new Typed(".multiText",{
+                strings : ["Hello World!", "สวัสดีโลก!","こんにちは、 世界!","반갑다 세상아!"],
+                loop : true,
+                typeSpeed : 90,
+                backSpeed : 70,
+                backDelay : 2000
+            })
+        </script>
     </div>
 </body>
 </html>

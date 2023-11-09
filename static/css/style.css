@@ -104,7 +104,7 @@ header{
 }
 
 .b-sr{
-    background-color: black;
+    background-color: #e9202a;
 }
 
 .b-mx{
@@ -277,35 +277,3 @@ b{
     margin-left: 10px;
     animation: floatup .5s forwards
 }
-
-@keyframes floatup {
-    from {
-        transform: translateY(14px);
-        opacity: .0;
-    }
-    to {
-        transform: translateY(0px);
-        opacity: 1;
-    }
-}
-
-@media screen and (max-width:600px) {
-    .full-chat-block {
-        width: 100%;
-        border-radius: 0px;
-    }
-    .chat-bar-collapsible {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-    }
-    .collapsible {
-        width: 100%;
-        border: 0px;
-        border-top: 3px solid white;
-        border-radius: 0px;
-    }
-}
-
-

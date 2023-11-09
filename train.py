@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 # Load intents from a JSON file
-with open('intents.json', 'r', encoding='utf-8') as file:
+with open('/home/ArthurThanagorn/mysite/intents.json', 'r', encoding='utf-8') as file:
     intents = json.load(file)
 
 try:
@@ -79,13 +79,13 @@ try:
     model.load('model_keras.h5')
 except:
     model.fit(training, output, epochs=1000, batch_size=8, verbose=1)
-    model.save('model_keras.h5')
+    model.save('model_keras', save_format='h5')
 
 # Define a function to generate a bag of words
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
-    correct_words = pt.correct(s)
-    s_words = pt.word_tokenize(correct_words, engine="newmm")
+    s_words = pt.word_tokenize(s, engine="newmm")
+
 
     for se in s_words:
         for i, w in enumerate(words):

@@ -10,30 +10,15 @@ document.getElementById("cpybtn").onclick = function () {
     bsAlert.show();
 }
 
-//alert
 window.onload = (event) => {
     let myAlert = document.getElementById("MobileAlert");
     var bsAlert = new bootstrap.Toast(myAlert);
-    bsAlert.show();//show it
+    bsAlert.show();
 };
 
-// Collapsible
-var coll = document.getElementsByClassName("collapsible");
-
-for (let i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-
-        var content = this.nextElementSibling;
-
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-        }
-
-    });
-}
+$(window).on("load", function () {
+    $(".loader-wrapper").fadeOut("slow");
+});
 
 function getTime() {
     let today = new Date();
@@ -54,14 +39,13 @@ function getTime() {
 
 // Gets the first message
 function firstBotMessage() {
-    let firstMessage = "How's it going?"
+    let firstMessage = "สวัสดี เป็นอย่างไรบ้าง"
     document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
 
     let time = getTime();
 
     $("#chat-timestamp").append(time);
     document.getElementById("userInput").scrollIntoView(false);
-
 }
 
 firstBotMessage();
@@ -80,7 +64,7 @@ function getResponse() {
     let userText = $("#textInput").val();
 
     if (userText == "") {
-        userText = "สวัสดี";
+        userText = "Text something!";
     }
 
     let userHtml = '<p class="userText"><span>' + userText + '</span></p>';
@@ -105,8 +89,6 @@ function getResponse() {
     setTimeout(() => {
         getHardResponse(userText);
     }, 1000)
-
-    
 }
 
 // Function to handle user input
@@ -141,10 +123,6 @@ function buttonSendText(sampleText) {
 
 function sendButton() {
     getResponse();
-}
-
-function heartButton() {
-    buttonSendText("Heart clicked!")
 }
 
 // Press enter to send a message
